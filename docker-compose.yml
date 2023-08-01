@@ -1,0 +1,25 @@
+version: '3.7'
+
+services:  
+  youtube_bot:
+    container_name: youtube_bot
+    build: ./        
+    ports:
+      - 8006:3000      
+    environment:   
+      - docker=true
+      - PUBLIC_FIREBASE_API_KEY= AIzaSyC5xBFv5-MI5au4aQvFY2xe-VcoofbGZMM
+      - PUBLIC_FIREBASE_AUTH_DOMAIN= miconproject-297dd.firebaseapp.com
+      - PUBLIC_FIREBASE_DATABASE_URL= https://miconproject-297dd-default-rtdb.firebaseio.com
+      - PUBLIC_FIREBASE_PROJECT_ID= miconproject-297dd
+      - PUBLIC_FIREBASE_STORAGE_BUCKET= miconproject-297dd.appspot.com
+      - PUBLIC_FIREBASE_MESSAGING_SENDER_ID= 815392445333
+      - PUBLIC_FIREBASE_APP_ID= 1:815392445333:web:f94f7b12dcc871d77d5c9c
+      - PUBLIC_FIREBASE_MEASUREMENT_ID= G-01S9P6930K
+    working_dir: /usr/src/app
+    entrypoint: "pnpm start"
+    networks:
+      - shared   
+networks:
+  shared:
+    external: true
